@@ -12,6 +12,7 @@ from configparser import ConfigParser
 
 from langchain_google_genai import GoogleGenerativeAI
 import os
+import configparser
 
 from langchain.embeddings import SentenceTransformerEmbeddings
 import sentence_transformers
@@ -66,8 +67,15 @@ def gen_and_store_embeddings():
     return docsearch
 
 def generate_qa_chain():
+    config = configparser.ConfigParser()
+    config.read("config.ini")
+    
+    # Retrieve the API key from the config file
+    api_key = config.get("google_api", "key")
+    
+    # Set the API key in the environment variable if not already set
     if "GOOGLE_API_KEY" not in os.environ:
-        os.environ["GOOGLE_API_KEY"] = "YOUR_API_KEY"
+        os.environ["GOOGLE_API_KEY"] = api_key
     model_name= "gemini-pro"
     llm = GoogleGenerativeAI(model=model_name)
     retriever=docsearch.as_retriever()
