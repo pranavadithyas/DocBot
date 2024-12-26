@@ -75,7 +75,7 @@ $ pip install -r requirements.txt
 1. Create a `config.ini` file in the root folder.
 2. Add your Google Gemini API key in the following format:
 ```ini
-[google_gemini]
+[google_api]
 key = YOUR_API_KEY
 ```
 
