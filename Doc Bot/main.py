@@ -67,7 +67,7 @@ def gen_and_store_embeddings():
 
 def generate_qa_chain():
     if "GOOGLE_API_KEY" not in os.environ:
-        os.environ["GOOGLE_API_KEY"] = "AIzaSyASvPHRqAtTh_xDOCChennNxjerHOPU_UY"
+        os.environ["GOOGLE_API_KEY"] = "YOUR_API_KEY"
     model_name= "gemini-pro"
     llm = GoogleGenerativeAI(model=model_name)
     retriever=docsearch.as_retriever()
